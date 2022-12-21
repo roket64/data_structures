@@ -2,6 +2,7 @@
 #define DATA_STRUCTURES_SEGMENT_TREE_H
 
 #include <vector>
+#include <cstdint>
 
 template<class NodeType = std::int64_t, class Functor = std::plus<>>
 class SegmentTree {
