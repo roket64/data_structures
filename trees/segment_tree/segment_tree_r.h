@@ -10,7 +10,7 @@ public:
     RecursiveSegTree(std::vector <T> &a, T e)
             : sz_(a.size()), e_(e) {
         tree_.assign(4 * sz_, e_);
-        build(a, 1, e_, sz_ - 1);
+        build(a, 1, 0, sz_ - 1);
     }
 
     T update(int pos, T val) {
