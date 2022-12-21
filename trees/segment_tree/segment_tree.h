@@ -3,7 +3,7 @@
 
 #include <vector>
 
-template<class NodeType, class Functor>
+template<class NodeType = std::int64_t, class Functor = std::plus<>>
 class SegmentTree {
 public:
     SegmentTree(int sz, const NodeType &e)
