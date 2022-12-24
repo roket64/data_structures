@@ -6,11 +6,20 @@
 
 template<class NodeType = long long,
         class LazyType = long long,
-        class Functor = std::plus<>>
+        class Functor = std::plus<>,
+        class UpdateFunctor = std::plus<>,
+        class LazyFunctor = std::plus<>>
 class LazySegmentTree {
     typedef NodeType T;
     typedef LazyType L;
 public:
+    LazySegmentTree(std::vector<T> &a, T e, L id)
+            : sz_(a.size()), e_(e), id_(id) {
+        tree_.assign(4 * sz_, e_);
+        lazy_.assign(4 * sz_, id_);
+        build(a, 1, 0, sz_ - 1);
+    }
+
     /* not sure this is valid operation
     T update(int pos, T val) {
         return update(1, 0, sz_ - 1, --pos, val);
@@ -89,6 +98,7 @@ private:
     Functor functor_;
     const size_t sz_;
     const T e_;
+    const L id_;
     std::vector<T> tree_;
     std::vector<T> lazy_;
 };
