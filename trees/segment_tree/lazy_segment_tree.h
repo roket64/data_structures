@@ -11,7 +11,7 @@ class LazySegmentTree {
     typedef NodeType T;
     typedef LazyType L;
 public:
-    /*
+    /* not sure this is valid operation
     T update(int pos, T val) {
         return update(1, 0, sz_ - 1, --pos, val);
     }
@@ -40,7 +40,7 @@ private:
         lazy_[n] = 0;
     }
 
-    /*
+    /* implementation of function update(pos, val);
     T update(int n, int s, int e, int pos, T val) {
         if (pos < s || e < pos) return tree_[n];
         if (s == e) return tree_[n] = val;
