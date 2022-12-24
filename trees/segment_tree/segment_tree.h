@@ -2,9 +2,9 @@
 #define DATA_STRUCTURES_SEGMENT_TREE_H
 
 #include <vector>
-#include <cstdint>
+#include <functional>
 
-template<class NodeType = std::int64_t, class Functor = std::plus<>>
+template<class NodeType = long long, class Functor = std::plus<>>
 class SegmentTree {
 public:
     SegmentTree(int sz, const NodeType &e)
@@ -55,6 +55,5 @@ private:
     const NodeType e_;
     Functor functor_;
 };
-
 
 #endif //DATA_STRUCTURES_SEGMENT_TREE_H

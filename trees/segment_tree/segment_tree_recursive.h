@@ -1,13 +1,14 @@
-#ifndef DATA_STRUCTURES_SEGMENT_TREE_R_H
-#define DATA_STRUCTURES_SEGMENT_TREE_R_H
+#ifndef DATA_STRUCTURES_SEGMENT_TREE_RECURSIVE_H
+#define DATA_STRUCTURES_SEGMENT_TREE_RECURSIVE_H
 
 #include <vector>
+#include <functional>
 
-template<class NodeType, class Functor>
+template<class NodeType = long long, class Functor = std::plus<>>
 class RecursiveSegTree {
     typedef NodeType T;
 public:
-    RecursiveSegTree(std::vector <T> &a, T e)
+    RecursiveSegTree(std::vector<T> &a, T e)
             : sz_(a.size()), e_(e) {
         tree_.assign(4 * sz_, e_);
         build(a, 1, 0, sz_ - 1);
@@ -22,11 +23,11 @@ public:
     }
 
 private:
-    T build(std::vector <T> &a, int n, int s, int e) {
+    T build(std::vector<T> &a, int n, int s, int e) {
         if (s == e) return tree_[n] = a[s];
         int mid = (s + e) >> 1;
 
-        T lhs = build(a, (n << 1), s, mid);
+        T lhs = build(a, n << 1, s, mid);
         T rhs = build(a, n << 1 | 1, mid + 1, e);
 
         return tree_[n] = functor_(lhs, rhs);
@@ -37,7 +38,7 @@ private:
         if (l <= s && e <= r) return tree_[n];
 
         int mid = (s + e) >> 1;
-        T lhs = get((n << 1), s, mid, l, r);
+        T lhs = get(n << 1, s, mid, l, r);
         T rhs = get(n << 1 | 1, mid + 1, e, l, r);
 
         return functor_(lhs, rhs);
@@ -48,7 +49,7 @@ private:
         if (s == e) return tree_[n] = val;
 
         int mid = (s + e) >> 1;
-        T lhs = update((n << 1), s, mid, pos, val);
+        T lhs = update(n << 1, s, mid, pos, val);
         T rhs = update(n << 1 | 1, mid + 1, e, pos, val);
 
         return tree_[n] = functor_(lhs, rhs);
@@ -56,8 +57,8 @@ private:
 
     Functor functor_;
     const size_t sz_;
-    const NodeType e_;
+    const T e_;
     std::vector<T> tree_;
 };
 
-#endif //DATA_STRUCTURES_SEGMENT_TREE_R_H
+#endif //DATA_STRUCTURES_SEGMENT_TREE_RECURSIVE_H
