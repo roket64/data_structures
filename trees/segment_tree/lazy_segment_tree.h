@@ -39,6 +39,8 @@ private:
         if (s == e) return tree_[n] = a[s];
     }
 
+    /* propagate lazy[n]'s lazy to its child nodes, and set it to id of lazy.*/
+    /* this implementation is working only for the default functor(std::plus<>), should be fixed later. */
     void propagate(int n, int s, int e) {
         if (lazy_[n] == 0) return;
         tree_[n] += (e - s + 1) * lazy_[n];
@@ -62,6 +64,8 @@ private:
     }
     /**/
 
+    /* update the value of interval [l, r] to diff. */
+    /* function propagate() must be called at first. */
     T update(int n, int s, int e, int l, int r, T diff) {
         propagate(n, s, e);
 
@@ -82,6 +86,8 @@ private:
         return tree_[n] = functor_(lhs, rhs);
     }
 
+    /* get the calculation of interval [l, r] of given functor. */
+    /* function propagate() must be called at first. */
     T get(int n, int s, int e, int l, int r) {
         propagate(n, s, e);
 
