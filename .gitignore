@@ -1,4 +1,10 @@
-# 프로젝트 제외 경로
-/cmake-build-debug/
+# Excluded Project Paths
+
 main.cpp
+
+# VSCode Settings
+/.vscode/
+
+# CMakefiles
+/build/
 CMakeLists.txt
