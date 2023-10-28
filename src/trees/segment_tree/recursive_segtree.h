@@ -1,12 +1,11 @@
-#ifndef DATA_STRUCTURES_SEGMENT_TREE_RECURSIVE_H
-#define DATA_STRUCTURES_SEGMENT_TREE_RECURSIVE_H
+#ifndef RECURSIVE_SEGTREE_H
+#define RECURSIVE_SEGTREE_H
 
 #include <vector>
 #include <functional>
 
 template<class NodeType = long long, class Functor = std::plus<>>
 class RecursiveSegTree {
-    typedef NodeType T;
 public:
     RecursiveSegTree(std::vector<T> &a, T e)
             : sz_(a.size()), e_(e) {
@@ -23,6 +22,8 @@ public:
     }
 
 private:
+    typedef NodeType T;
+
     T build(std::vector<T> &a, int n, int s, int e) {
         if (s == e) return tree_[n] = a[s];
         int mid = (s + e) >> 1;
@@ -61,4 +62,4 @@ private:
     std::vector<T> tree_;
 };
 
-#endif //DATA_STRUCTURES_SEGMENT_TREE_RECURSIVE_H
+#endif // RECURSIVE_SEGTREE_H

@@ -1,5 +1,5 @@
-#ifndef DATA_STRUCTURES_SEGMENT_TREE_H
-#define DATA_STRUCTURES_SEGMENT_TREE_H
+#ifndef SEGTREE_H
+#define SEGTREE_H
 
 #include <vector>
 #include <functional>
@@ -56,4 +56,4 @@ private:
     Functor functor_;
 };
 
-#endif //DATA_STRUCTURES_SEGMENT_TREE_H
+#endif // SEGTREE_H

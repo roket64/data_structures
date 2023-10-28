@@ -1,5 +1,5 @@
-#ifndef DATA_STRUCTURES_LAZY_SEGMENT_TREE_H
-#define DATA_STRUCTURES_LAZY_SEGMENT_TREE_H
+#ifndef LAZY_SEGTREE_H
+#define LAZY_SEGTREE_H
 
 #include <vector>
 #include <functional>
@@ -109,4 +109,4 @@ private:
     std::vector<T> lazy_;
 };
 
-#endif //DATA_STRUCTURES_LAZY_SEGMENT_TREE_H
+#endif // LAZY_SEGTREE_H
